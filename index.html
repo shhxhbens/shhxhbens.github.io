@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>李华 · 个人主页</title>
+    <!-- 使用思源黑体，适合中文显示 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #1e2a3a;
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        /* 左侧边栏 */
+        .sidebar {
+            flex: 1 1 300px;
+            background: #f9fcff;
+            padding: 2.5rem 2rem;
+            border-right: 1px solid #e2eaf2;
+        }
+
+        .sidebar .avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            margin: 0 auto 1.5rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3.5rem;
+            font-weight: 400;
+            box-shadow: 0 12px 24px -8px rgba(0,0,0,0.25);
+        }
+
+        .sidebar h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            text-align: center;
+            color: #0b2545;
+        }
+
+        .sidebar .subhead {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 1.8rem;
+            border-bottom: 1px solid #d0deeb;
+            padding-bottom: 1.2rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            margin-bottom: 1.2rem;
+            color: #2a405c;
+            font-size: 0.95rem;
+        }
+
+        .info-item i {
+            width: 1.6rem;
+            color: #1e3c72;
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+        }
+
+        .info-item a {
+            color: #1e4a6d;
+            text-decoration: none;
+            border-bottom: 1px dotted #9bb7d4;
+        }
+
+        .info-item a:hover {
+            border-bottom: 1px solid #1e4a6d;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.4rem;
+            margin: 2.2rem 0 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .social-links a {
+            color: #3a5670;
+            transition: color 0.2s;
+        }
+
+        .social-links a:hover {
+            color: #0a2647;
+        }
+
+        /* 右侧主内容 */
+        .main {
+            flex: 3 1 600px;
+            padding: 2.8rem 2.8rem;
+        }
+
+        .section {
+            margin-bottom: 2.8rem;
+        }
+
+        .section h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            border-left: 6px solid #1e3c72;
+            padding-left: 1.2rem;
+            margin-bottom: 1.2rem;
+            color: #0b2545;
+        }
+
+        .section h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.5rem;
+            color: #163a5c;
+        }
+
+        .section p {
+            color: #2b3f5c;
+            margin-bottom: 0.8rem;
+        }
+
+        .section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .section li {
+            padding-left: 1.6rem;
+            position: relative;
+            margin-bottom: 0.7rem;
+            color: #2c405c;
+        }
+
+        .section li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #1e3c72;
+            font-weight: bold;
+        }
+
+        .highlight-link {
+            color: #1e4a6d;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px dotted #8fb1cc;
+        }
+
+        .highlight-link:hover {
+            border-bottom: 1px solid #1e4a6d;
+        }
+
+        .vision-box {
+            background: #edf4fc;
+            padding: 2rem 2.2rem;
+            border-radius: 24px;
+            margin-bottom: 2.5rem;
+            font-style: normal;
+            font-size: 1.2rem;
+            border-left: 6px solid #1e3c72;
+            color: #0f2c47;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        .vision-box p {
+            margin: 0;
+            font-weight: 400;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #d6e2f0;
+            margin: 2.2rem 0;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-top: 1.2rem;
+        }
+
+        .skill-card {
+            background: #f1f7fd;
+            padding: 1rem 1rem;
+            border-radius: 18px;
+            font-weight: 500;
+            border: 1px solid #cbd9ea;
+            transition: 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .skill-card i {
+            font-size: 2rem;
+            color: #1e3c72;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-card span {
+            font-size: 1rem;
+            color: #1e3a5f;
+            font-weight: 500;
+        }
+
+        .project-item {
+            background: #f6fafe;
+            border-radius: 18px;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #d2e1f2;
+        }
+
+        .project-item strong {
+            font-size: 1.2rem;
+            color: #0b2b4a;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+
+        .project-item p {
+            margin-bottom: 0.3rem;
+            color: #2a3f5c;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            color: #607d9c;
+            font-size: 0.9rem;
+            border-top: 1px solid #d6e2f0;
+            padding-top: 1.5rem;
+        }
+
+        @media (max-width: 700px) {
+            .sidebar {
+                border-right: none;
+                border-bottom: 1px solid #d6e2f0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 左侧个人信息栏 -->
+        <aside class="sidebar">
+            <div class="avatar">
+                <span>李</span> <!-- 可替换为头像图片 -->
+            </div>
+            <h1>李华</h1>
+            <div class="subhead">软件工程 · 大三</div>
+
+            <div class="info-item">
+                <i class="fas fa-university"></i>
+                <span>海南大学 计算机科学与技术学院</span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-code"></i>
+                <span>主修：软件工程</span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-envelope"></i>
+                <span><a href="mailto:lihua@hainanu.edu.cn">lihua@hainanu.edu.cn</a></span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>海南 · 海口</span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-calendar-alt"></i>
+                <span>预计毕业：2027年</span>
+            </div>
+
+            <div class="social-links">
+                <a href="#" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank" aria-label="个人博客"><i class="fas fa-blog"></i></a>
+            </div>
+        </aside>
+
+        <!-- 右侧主要内容 -->
+        <main class="main">
+            <!-- 愿景 / 个人格言 -->
+            <div class="vision-box">
+                <p>“用代码构建智能，以创新服务社会 —— 成为有温度的软件工程师。”</p>
+            </div>
+
+            <!-- 关于我 -->
+            <section class="section">
+                <h2>关于我</h2>
+                <p>你好！我是李华，海南大学软件工程专业大三学生。我对前后端开发、人工智能和移动应用充满热情，喜欢通过技术解决实际问题。在校期间，我积极参与科研项目与学科竞赛，担任过校级创新项目负责人，并获得过全国服务外包创新创业大赛区域赛二等奖。我希望将来能成为一名全栈开发工程师，用代码创造价值。</p>
+            </section>
+
+            <!-- 教育经历 -->
+            <section class="section">
+                <h2>教育背景</h2>
+                <p><strong>海南大学</strong> · 软件工程  (2024 – 2027，预计)</p>
+                <p>主修课程：数据结构、数据库系统、Web前端开发、Java企业级开发、软件工程、人工智能导论、移动应用开发等。GPA：3.7/4.0，连续两年获校级一等奖学金。</p>
+            </section>
+
+            <!-- 项目经验 (仿照兴趣网格) -->
+            <section class="section">
+                <h2>项目经历</h2>
+                <div class="project-item">
+                    <strong>🌱 校园二手交易小程序</strong>
+                    <p>基于微信小程序 + Spring Boot + MySQL 开发，实现了用户认证、商品发布、私信聊天、订单管理等功能。该项目获得2025年海南大学“创新杯”二等奖，并在校内实际运营，用户量达300+。</p>
+                </div>
+                <div class="project-item">
+                    <strong>🤖 智能简历解析系统 (课程设计)</strong>
+                    <p>使用Python + Flask + spaCy构建，可自动提取简历中的姓名、联系方式、教育经历、技能关键词，并生成评分报告。作为开源项目发布在GitHub上，获得30+ star。</p>
+                </div>
+                <div class="project-item">
+                    <strong>📱 食堂点餐App (团队合作)</strong>
+                    <p>负责Android客户端开发，使用Kotlin + Jetpack Compose，与后端（Node.js）配合实现食堂菜单浏览、在线点餐、订单跟踪。项目在软件工程课程展示中获得最佳创意奖。</p>
+                </div>
+            </section>
+
+            <!-- 技术栈 / 技能网格 -->
+            <section class="section">
+                <h2>技术栈</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <i class="fab fa-java"></i>
+                        <span>Java / Spring Boot</span>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fab fa-python"></i>
+                        <span>Python / Flask</span>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fab fa-js"></i>
+                        <span>JavaScript / Vue</span>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-database"></i>
+                        <span>MySQL / MongoDB</span>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fab fa-android"></i>
+                        <span>Android / Kotlin</span>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fab fa-git-alt"></i>
+                        <span>Git / GitHub</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 获奖与证书 -->
+            <section class="section">
+                <h2>获奖与证书</h2>
+                <ul>
+                    <li>第十二届中国大学生服务外包创新创业大赛 区域赛二等奖 (2025)</li>
+                    <li>全国计算机设计大赛 省级三等奖 (2024)</li>
+                    <li>海南大学“三好学生”荣誉称号 (2024、2025)</li>
+                    <li>英语六级 (CET-6) · 良好的技术文档阅读能力</li>
+                </ul>
+            </section>
+
+            <!-- 兴趣爱好 (加入一些图标) -->
+            <section class="section">
+                <h2>爱好与日常</h2>
+                <p>🏀 篮球 · ⚽ 足球 · 🎮 游戏设计 · 📚 科幻小说 · ☕ 咖啡探店</p>
+                <p>我也是学校开源社团的负责人之一，喜欢和朋友们一起 hackathon 和分享技术。</p>
+            </section>
+
+            <footer>
+                &copy; 2026 李华 · 最后更新 2026年3月
+            </footer>
+        </main>
+    </div>
+</body>
+</html>
